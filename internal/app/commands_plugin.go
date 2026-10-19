@@ -855,6 +855,8 @@ func (a *App) PluginToggleByName(name string, enabled bool) {
 		a.PluginsPanel.Refresh()
 	}
 	if p != nil && !p.Loaded() {
+		a.RemovePluginPanels(name)
+		a.ClearPluginSources(name)
 		a.requestPluginApproval(p)
 	}
 }
